@@ -6,6 +6,14 @@ I wanted to have a simple bash script to install Ansible on Ubuntu 20.04, so her
 
 > :warning: This script is only tested on Ubuntu 20.04! It might work on other debian based distros, try at own risk.
 
+## Features
+
+- Updates software repositories
+- Installs `software-properties-common`
+- Adds `ppa:ansible/ansible`
+- Installs Ansible with dependecies
+- Copies `.ansible.cfg` from this repo into `/root/` to enable colorful output if Ansible is run as `sudo ansible-pull -U ...`
+
 ## Usage
 
 1. Clone or download this repository to your local machine
