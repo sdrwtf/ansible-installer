@@ -81,7 +81,7 @@ _install() {
     add-apt-repository --yes --update ppa:ansible/ansible || \
     _die "Could not add PPA ansible/ansible\n"
 
-    _info "Installing paket ansible\n"
+    _info "Installing paket ansible and it's dependencies\n"
     apt install ansible --yes || \
     _die "Could not install paket ansible\n"
 
