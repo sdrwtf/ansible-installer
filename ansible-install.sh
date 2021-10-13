@@ -85,7 +85,13 @@ _install() {
     apt install ansible --yes || \
     _die "Could not install paket ansible\n"
 
-    _good "Done\n\n$(ansible --version)\n"
+    _good "Installation completed\n\n$(ansible --version)\n"
+
+    _info "Consider enabling colorful output for Ansible by adding\n\n" \
+          "             Defaults        env_keep += \"ANSIBLE_FORCE_COLOR\"\n\n" \
+          "        to sudoers file ('sudo visudo' to edit).\n"
+
+    _good "Done\n"
   else
     _die "Aborted by user\n"
   fi
