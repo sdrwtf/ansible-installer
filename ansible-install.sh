@@ -69,7 +69,7 @@ _install() {
 
   if _ask "Continue?"; then
 
-    _info "Updating repositories OS\n"
+    _info "Updating repositories\n"
     apt update || \
     _die "Could not update repositories\n"
 
