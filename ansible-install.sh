@@ -65,7 +65,8 @@ _install() {
         "        - update repositories\n" \
         "        - install paket software-properties-common\n" \
         "        - add PPA ansible/ansible\n" \
-        "        - install ansible\n"
+        "        - install ansible\n" \
+        "        - copy .ansible.cfg in root home for color support\n"
 
   if _ask "Continue?"; then
 
@@ -87,9 +88,9 @@ _install() {
 
     _good "Installation completed\n\n$(ansible --version)\n"
 
-    _info "Consider enabling colorful output for Ansible by adding\n\n" \
-          "             Defaults        env_keep += \"ANSIBLE_FORCE_COLOR\"\n\n" \
-          "        to sudoers file ('sudo visudo' to edit).\n"
+    _info "Copying .ansible.cfg\n"
+    cp .ansible.cfg /root/ && chown root:root /root/.ansible.cfg || \
+    _error "Could not copy .ansible.cfg to /root/, color output might not work"
 
     _good "Done\n"
   else
