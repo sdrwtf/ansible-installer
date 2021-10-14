@@ -79,11 +79,16 @@ _install() {
     _die "Installation of paket software-properties-common failed\n"
 
     _info "Adding PPA ansible/ansible\n"
-    add-apt-repository --yes --update ppa:ansible/ansible || \
+    #add-apt-repository --yes --update ppa:ansible/ansible || \
+    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu bionic main" > /etc/apt/sources.list.d/ansible.list || \
     _die "Could not add PPA ansible/ansible\n"
 
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 || \
+    _die "Could not add keyserver\n"
+
+
     _info "Installing paket ansible and its dependencies\n"
-    apt install ansible --yes || \
+    apt update && apt install ansible --yes || \
     _die "Could not install paket ansible\n"
 
     _good "Installation completed\n\n$(ansible --version)\n"
